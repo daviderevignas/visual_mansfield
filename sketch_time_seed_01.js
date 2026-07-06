@@ -1,25 +1,47 @@
-const SEED = 12345;
+const INTERVAL = 1000; // milliseconds. Use 1000, 500, 250, etc.
+const L = 60;
+const STEPS = 10000;
 
-
-const L = 70;
-const STEPS = 20000;
-
-let walk;
+let currentWalk;
+let nextWalk;
+let currentSeed;
+let lastChange = 0;
 
 function setup() {
-  createCanvas(700, 700);
-  // noLoop();
-  // randomSeed(SEED);
+  let canvas = createCanvas(700, 700);
+  canvas.parent("sketch-container");
+
+  currentSeed = floor(Date.now() / INTERVAL);
+
+  currentWalk = makeWalk(currentSeed);
+  nextWalk = makeWalk(currentSeed + 1);
+
+  drawWalk(currentWalk, L, width, height);
 }
 
-function draw(){
-  if (frameCount % (2 * 60) === 1) {
-  randomSeed(floor(Date.now() / 10000));
-  background(255);
-  walk = mansfieldWalk2D(L, STEPS);
-  drawWalk(walk, L, width, height);
+function draw() {
+  if (millis() - lastChange >= INTERVAL) {
+    lastChange = millis();
+
+    currentSeed = floor(Date.now() / INTERVAL);
+
+    // Use the precomputed walk.
+    currentWalk = nextWalk;
+
+    background(255);
+    drawWalk(currentWalk, L, width, height);
+
+    // Prepare the following one.
+    nextWalk = makeWalk(currentSeed + 1);
+  }
 }
+
+function makeWalk(seed) {
+  randomSeed(seed);
+  return mansfieldWalk2D(L, STEPS);
 }
+
+
 
 function drawWalk(walk) {
   const margin = 50;

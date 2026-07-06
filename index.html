@@ -1,37 +1,57 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>mansfield</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mansfield</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
 
 
 
 
 
+  <div id="sketch-container"></div>
 
-    <script defer src="sketch_time_seed_01.js"></script>
+  <div class="div_cite">
+    <p>
+      Marc L. Mansfield 
+      <em>Unbiased sampling of lattice Hamilton path ensembles</em> 
+      J. Chem. Phys. 125.15, 
+      154103 (2006) https://doi.org/10.1063/1.2357935
+    </p>
+  </div>
 
 
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        background: rgb(50,50,50);
-      }
 
-      body {
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-      }
+  <script defer src="sketch_time_seed_01.js"></script>
 
-      canvas {
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-      }
-    </style>
-  </head>
-  <body></body>
+  <style>
+    html,
+    body {
+      margin: 10px;
+      padding: 10px;
+      background: rgb(50, 50, 50);
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    canvas {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .div_cite{
+      background: rgb(150, 150, 150);
+      margin: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body></body>
+
 </html>
